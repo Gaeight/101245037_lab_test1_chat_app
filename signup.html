@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Signup Page</title>
+    </head>
+
+    <body>
+        <h1>Sign Up Page</h1>
+            <label>First Name:</label>
+            <input id = "firstname" type="text" name="firstname" value=""> <br> <br>
+            <label>Last Name:</label>
+            <input id = "lastname" type="text" name="lastname" value=""> <br> <br>
+            <label>Username:</label>
+            <input id = "username" type="text" name="username" value="" > <br> <br>
+            <label>Password:</label>
+            <input id = "password" type="password" name="password" value=""> <br> <br>
+            <button type="button" name="button"  onclick="createUser()"><a href="/loginPage.html">submit</a></button>
+            <button type="button" name="button"><a href="/loginPage.html">Back</a></button>
+    </body>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const client = io()
+
+        function createUser(){
+            client.emit('createUser',
+            document.getElementById('firstname').value,
+            document.getElementById('lastname').value,
+            document.getElementById('username').value,
+            document.getElementById('password').value)
+        }
+    </script>
+</html>
